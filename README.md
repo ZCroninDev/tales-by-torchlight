@@ -1,3 +1,4 @@
+
 # Nuxt Minimal Starter
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
@@ -6,37 +7,37 @@ Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduct
 
 Make sure to install dependencies:
 
-```bash
-# npm
-npm install
+	```bash
+	# npm
+	npm install
 
-# pnpm
-pnpm install
+	# pnpm
+	pnpm install
 
-# yarn
-yarn install
+	# yarn
+	yarn install
 
-# bun
-bun install
-```
+	# bun
+	bun install
+	```
 
 ## Development Server
 
 Start the development server on `http://localhost:3000`:
 
-```bash
-# npm
-npm run dev
+	```bash
+	# npm
+	npm run dev
 
-# pnpm
-pnpm dev
+	# pnpm
+	pnpm dev
 
-# yarn
-yarn dev
+	# yarn
+	yarn dev
 
-# bun
-bun run dev
-```
+	# bun
+	bun run dev
+	```
 
 ## Production
 
