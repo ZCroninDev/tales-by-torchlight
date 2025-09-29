@@ -1,3 +1,4 @@
+
 <script setup lang="ts">
 type Frontmatter = Record<string, string>
 
@@ -10,7 +11,7 @@ type ParsedPost = {
     body: string
 }
 
-const markdownFiles = import.meta.glob('~/content/posts/*.md', { eager: true, as: 'raw' }) as Record<string, string>
+const markdownFiles = import.meta.glob("~~/content/posts/*.md", { eager: true, query: "?raw", import: "default" }) as Record<string, string>
 
 const posts = computed<ParsedPost[]>(() => {
     const parsed = Object.entries(markdownFiles).map(([path, content]) => parseMarkdownFile(path, content))
@@ -47,15 +48,20 @@ function extractFrontmatter(raw: string): { frontmatter: Frontmatter; body: stri
 
     const frontmatterBlock = match[1]
     const frontmatterLines = frontmatterBlock
-        .split('\n')
+        .split("\n")
         .map((line) => line.trim())
         .filter(Boolean)
 
     const frontmatter = frontmatterLines.reduce<Frontmatter>((acc, line) => {
-        const [key, ...rest] = line.split(':')
+        const colonIndex = line.indexOf(":")
+        if (colonIndex === -1) return acc
+
+        const key = line.slice(0, colonIndex).trim()
+        const rawValue = line.slice(colonIndex + 1).trim()
+        const value = rawValue.replace(/^["']/, "").replace(/["']$/, "")
+
         if (!key) return acc
-        const value = rest.join(':').trim().replace(/^['"`]|['"`]$/g, '')
-        acc[key.trim()] = value
+        acc[key] = value
         return acc
     }, {})
 
@@ -64,21 +70,21 @@ function extractFrontmatter(raw: string): { frontmatter: Frontmatter; body: stri
 }
 
 function getSlugFromPath(filePath: string): string {
-    const fileName = filePath.split('/').pop() || filePath
-    return fileName.replace(/\.md$/, '')
+    const fileName = filePath.split("/").pop() || filePath
+    return fileName.replace(/\.md$/, "")
 }
 
 function toTitleCase(slug: string): string {
     return slug
-        .split('-')
+        .split("-")
         .map((segment) => segment.charAt(0).toUpperCase() + segment.slice(1))
-        .join(' ')
+        .join(" ")
 }
 
 function buildExcerpt(body: string): string {
-    const firstParagraph = body.split(/\n{2,}/).find((section) => section.trim()) || ''
-    const plainText = firstParagraph.replace(/[#*_`>-]/g, '').trim()
-    return plainText.length > 180 ? `${plainText.slice(0, 177)}...` : plainText
+    const firstParagraph = body.split(/\n{2,}/).find((section) => section.trim()) || ""
+    const plainText = firstParagraph.replace(/[#*_>-]/g, "").trim()
+    return plainText.length > 180 ? plainText.slice(0, 177) + "..." : plainText
 }
 </script>
 
@@ -99,7 +105,7 @@ function buildExcerpt(body: string): string {
                     <h2 class="text-2xl font-semibold text-purple-700">{{ post.title }}</h2>
                     <p v-if="post.date || post.author" class="text-xs uppercase tracking-wide text-gray-400">
                         <span v-if="post.date">{{ post.date }}</span>
-                        <span v-if="post.date && post.author" class="mx-2">•</span>
+                        <span v-if="post.date && post.author" class="mx-2">&bull;</span>
                         <span v-if="post.author">{{ post.author }}</span>
                     </p>
                     <p class="text-sm text-gray-600">{{ post.excerpt }}</p>
