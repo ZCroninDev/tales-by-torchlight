@@ -1,9 +1,16 @@
 <script setup lang="ts">
+import { computed } from "vue"
+
 type ExampleCard = {
     title: string
     description: string
-    date: string
+    date?: string
+    to?: string
 }
+
+const props = defineProps<{
+    items?: ExampleCard[]
+}>()
 
 const defaultCards: ExampleCard[] = [
     {
@@ -17,6 +24,8 @@ const defaultCards: ExampleCard[] = [
         date: "September 5, 2025"
     }
 ]
+
+const cards = computed(() => (props.items && props.items.length ? props.items : defaultCards))
 </script>
 
 <template>
@@ -27,18 +36,12 @@ const defaultCards: ExampleCard[] = [
             </p>
         </slot>
 
-        <slot
-            v-for="card in defaultCards"
-            :key="card.title"
-            name="card"
-            :card="card"
-            mdc-unwrap="p"
-        >
+        <slot v-for="(card, index) in cards" :key="card.title" name="card" :card="card" :index="index" mdc-unwrap="p">
             <div class="grid gap-1">
                 <article class="bg-white rounded-lg shadow p-6 text-left transition hover:shadow-lg">
                     <h3 class="text-xl font-semibold text-purple-700 mb-2">{{ card.title }}</h3>
                     <p class="text-gray-600 mb-2">{{ card.description }}</p>
-                    <span class="text-xs text-gray-400">{{ card.date }}</span>
+                    <span v-if="card.date" class="text-xs text-gray-400">{{ card.date }}</span>
                 </article>
             </div>
         </slot>
