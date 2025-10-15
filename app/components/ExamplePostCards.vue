@@ -1,18 +1,46 @@
+<script setup lang="ts">
+type ExampleCard = {
+    title: string
+    description: string
+    date: string
+}
+
+const defaultCards: ExampleCard[] = [
+    {
+        title: "Getting Started with Nuxt 3",
+        description: "A beginner's guide to building fast and modern web apps with Nuxt 3.",
+        date: "September 10, 2025"
+    },
+    {
+        title: "Why Tailwind CSS Rocks",
+        description: "Discover the power and flexibility of utility-first CSS with Tailwind.",
+        date: "September 5, 2025"
+    }
+]
+</script>
+
 <template>
     <div class="grid gap-6 sm:grid-cols-2">
-        <div class="grid gap-1">
-            <div class="bg-white rounded-lg shadow p-6 text-left hover:shadow-lg transition">
-                <h3 class="text-xl font-semibold text-purple-700 mb-2">Getting Started with Nuxt 3</h3>
-                <p class="text-gray-600 mb-2">A beginner's guide to building fast and modern web apps with Nuxt 3.</p>
-                <span class="text-xs text-gray-400">September 10, 2025</span>
+        <slot name="intro" mdc-unwrap="p">
+            <p class="col-span-full text-center text-sm text-gray-500">
+                Override the `intro` slot with MDC content to customize this example card grid.
+            </p>
+        </slot>
+
+        <slot
+            v-for="card in defaultCards"
+            :key="card.title"
+            name="card"
+            :card="card"
+            mdc-unwrap="p"
+        >
+            <div class="grid gap-1">
+                <article class="bg-white rounded-lg shadow p-6 text-left transition hover:shadow-lg">
+                    <h3 class="text-xl font-semibold text-purple-700 mb-2">{{ card.title }}</h3>
+                    <p class="text-gray-600 mb-2">{{ card.description }}</p>
+                    <span class="text-xs text-gray-400">{{ card.date }}</span>
+                </article>
             </div>
-        </div>
-        <div class="grid gap-1">
-            <div class="bg-white rounded-lg shadow p-6 text-left hover:shadow-lg transition">
-                <h3 class="text-xl font-semibold text-purple-700 mb-2">Why Tailwind CSS Rocks</h3>
-                <p class="text-gray-600 mb-2">Discover the power and flexibility of utility-first CSS with Tailwind.</p>
-                <span class="text-xs text-gray-400">September 5, 2025</span>
-            </div>
-        </div>
+        </slot>
     </div>
 </template>
