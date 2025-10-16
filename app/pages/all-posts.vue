@@ -49,7 +49,12 @@ const { posts } = usePosts()
                     </div>
 
                     <slot name="post-footer" :post="post" mdc-unwrap="p">
-                        <div class="mt-auto text-sm text-purple-600">Full post preview coming soon.</div>
+                        <NuxtLink
+                            :to="`/posts/${post.slug}`"
+                            class="mt-auto inline-flex items-center text-sm font-semibold text-purple-600 hover:text-purple-700 hover:underline"
+                        >
+                            Read full post ->
+                        </NuxtLink>
                     </slot>
                 </article>
             </slot>

@@ -38,11 +38,15 @@ const cards = computed(() => (props.items && props.items.length ? props.items : 
 
         <slot v-for="(card, index) in cards" :key="card.title" name="card" :card="card" :index="index" mdc-unwrap="p">
             <div class="grid gap-1">
-                <article class="bg-white rounded-lg shadow p-6 text-left transition hover:shadow-lg">
+                <component
+                    :is="card.to ? 'NuxtLink' : 'article'"
+                    v-bind="card.to ? { to: card.to } : {}"
+                    class="bg-white rounded-lg shadow p-6 text-left transition hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
+                >
                     <h3 class="text-xl font-semibold text-purple-700 mb-2">{{ card.title }}</h3>
                     <p class="text-gray-600 mb-2">{{ card.description }}</p>
                     <span v-if="card.date" class="text-xs text-gray-400">{{ card.date }}</span>
-                </article>
+                </component>
             </div>
         </slot>
     </div>

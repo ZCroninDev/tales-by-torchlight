@@ -10,7 +10,7 @@ const featuredCards = computed(() =>
         title: post.title,
         description: post.excerpt,
         date: post.date,
-        to: `/posts#${post.slug}`
+        to: `/posts/${post.slug}`
     }))
 )
 
@@ -22,7 +22,7 @@ const hasFeaturedCards = computed(() => featuredCards.value.length > 0)
         <div class="max-w-2xl w-full text-center">
             <h1 class="text-5xl font-extrabold text-gray-900 mb-4">Welcome to My Blog</h1>
             <p class="text-lg text-gray-700 mb-8">Insights, stories, and tutorials on web development, technology, and more. Dive in and explore the latest posts!</p>
-            <NuxtLink to="/posts" class="inline-block px-6 py-3 bg-purple-600 text-white rounded-lg shadow hover:bg-purple-700 transition">All Posts</NuxtLink>
+            <NuxtLink to="/all-posts" class="inline-block px-6 py-3 bg-purple-600 text-white rounded-lg shadow hover:bg-purple-700 transition">All Posts</NuxtLink>
         </div>
         <div id="posts" class="mt-16 w-full max-w-2xl">
             <h2 class="text-2xl font-bold text-gray-800 mb-6">Recent Posts</h2>
@@ -39,7 +39,7 @@ const hasFeaturedCards = computed(() => featuredCards.value.length > 0)
                 <template #card="{ card }">
                     <div class="grid gap-1">
                         <NuxtLink
-                            :to="card.to ?? '/posts'"
+                            :to="card.to ?? '/all-posts'"
                             class="block rounded-lg bg-white p-6 text-left shadow transition hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
                         >
                             <h3 class="text-xl font-semibold text-purple-700 mb-2">{{ card.title }}</h3>
