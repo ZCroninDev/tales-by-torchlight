@@ -10,6 +10,10 @@ export default defineNuxtConfig({
     devtools: { enabled: true },
     modules: ['@nuxtjs/tailwindcss'],
     pages: true,
+    nitro: {
+        // GitHub Pages requires prerendered output and a static 404 fallback.
+        preset: 'github-pages'
+    },
     app: {
         baseURL
     }
