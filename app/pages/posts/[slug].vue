@@ -171,23 +171,23 @@ function escapeHtml(value: string): string {
 </script>
 
 <template>
-    <article class="mx-auto flex w-full max-w-3xl flex-col gap-10 px-4 py-16">
-        <NuxtLink to="/all-posts" class="text-sm font-medium text-purple-600 hover:underline">
+    <article class="mx-auto flex w-full max-w-3xl flex-col gap-10 rounded-3xl border border-emeraldJade/20 bg-white/90 px-6 py-16 shadow-lg shadow-emeraldJade/20">
+        <NuxtLink to="/all-posts" class="text-sm font-semibold text-torchOrange hover:text-torchGold hover:underline">
             <- Back to all posts
         </NuxtLink>
 
         <header class="space-y-4">
-            <h1 class="text-4xl font-bold text-gray-900">{{ post?.title }}</h1>
-            <p v-if="post?.date || post?.author" class="text-sm uppercase tracking-wide text-gray-400">
+            <h1 class="text-4xl font-bold text-emeraldDeep">{{ post?.title }}</h1>
+            <p v-if="post?.date || post?.author" class="text-sm uppercase tracking-wide text-emeraldSpruce/60">
                 <span v-if="post?.date">{{ post?.date }}</span>
                 <span v-if="post?.date && post?.author" class="mx-2">&bull;</span>
                 <span v-if="post?.author">{{ post?.author }}</span>
             </p>
-            <p v-if="post?.excerpt" class="text-lg text-gray-600">
+            <p v-if="post?.excerpt" class="text-lg text-emeraldSpruce/80">
                 {{ post?.excerpt }}
             </p>
         </header>
 
-        <div class="prose prose-slate max-w-none" v-html="renderedBody" />
+        <div class="prose max-w-none text-emeraldSpruce/90 prose-headings:text-emeraldDeep prose-a:text-torchOrange hover:prose-a:text-torchGold prose-code:text-emeraldDeep prose-strong:text-emeraldDeep" v-html="renderedBody" />
     </article>
 </template>

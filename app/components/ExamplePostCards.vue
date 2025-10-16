@@ -31,7 +31,7 @@ const cards = computed(() => (props.items && props.items.length ? props.items : 
 <template>
     <div class="grid gap-6 sm:grid-cols-2">
         <slot name="intro" mdc-unwrap="p">
-            <p class="col-span-full text-center text-sm text-gray-500">
+            <p class="col-span-full text-center text-sm text-emeraldSpruce/70">
                 Override the `intro` slot with MDC content to customize this example card grid.
             </p>
         </slot>
@@ -41,11 +41,11 @@ const cards = computed(() => (props.items && props.items.length ? props.items : 
                 <component
                     :is="card.to ? 'NuxtLink' : 'article'"
                     v-bind="card.to ? { to: card.to } : {}"
-                    class="bg-white rounded-lg shadow p-6 text-left transition hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
+                    class="rounded-2xl bg-white/90 p-6 text-left shadow transition hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-emeraldJade"
                 >
-                    <h3 class="text-xl font-semibold text-purple-700 mb-2">{{ card.title }}</h3>
-                    <p class="text-gray-600 mb-2">{{ card.description }}</p>
-                    <span v-if="card.date" class="text-xs text-gray-400">{{ card.date }}</span>
+                    <h3 class="mb-2 text-xl font-semibold text-emeraldDeep">{{ card.title }}</h3>
+                    <p class="mb-2 text-emeraldSpruce/80">{{ card.description }}</p>
+                    <span v-if="card.date" class="text-xs uppercase tracking-wide text-emeraldSpruce/60">{{ card.date }}</span>
                 </component>
             </div>
         </slot>

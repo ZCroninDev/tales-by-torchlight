@@ -9,7 +9,16 @@ export default {
         './nuxt.config.{js,ts}'
     ],
     theme: {
-        extend: {},
+    extend: {
+            colors: {
+                emeraldDeep: '#0f2a24',
+                emeraldSpruce: '#102e27',
+                emeraldJade: '#1f6f5b',
+                torchGold: '#fde68a',
+                torchOrange: '#f97316',
+            },
+        },
     },
+
     plugins: [],
 }
