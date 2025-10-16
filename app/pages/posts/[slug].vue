@@ -171,7 +171,7 @@ function escapeHtml(value: string): string {
 </script>
 
 <template>
-    <article class="mx-auto flex w-full max-w-3xl flex-col gap-10 rounded-3xl border border-emeraldJade/30 bg-emeraldSpruce/85 px-6 py-16 shadow-lg shadow-emeraldJade/25">
+    <article class="mx-auto flex w-full max-w-3xl flex-col gap-10 rounded-3xl border border-emeraldJade/30 bg-emeraldSpruce/85 px-6 py-16 my-12 shadow-lg shadow-emeraldJade/25">
         <NuxtLink to="/all-posts" class="text-sm font-semibold text-torchGold hover:text-mist hover:underline">
             <- Back to all posts
         </NuxtLink>
