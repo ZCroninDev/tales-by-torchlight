@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue"
-import ExamplePostCards from "~/components/ExamplePostCards.vue"
+import PostsCard from "~/components/PostsCard.vue"
 import { usePosts } from "~/composables/usePosts"
 
 const { posts } = usePosts()
@@ -27,7 +27,7 @@ const hasFeaturedCards = computed(() => featuredCards.value.length > 0)
         <div id="posts" class="mt-16 w-full max-w-2xl">
             <h2 class="mb-6 text-2xl font-bold text-emeraldDeep">Recent Posts</h2>
 
-            <ExamplePostCards :items="hasFeaturedCards ? featuredCards : undefined">
+            <PostsCard :items="hasFeaturedCards ? featuredCards : undefined">
                 <template #intro>
                     <p v-if="hasFeaturedCards" class="col-span-full text-center text-sm text-emeraldSpruce/70">
                         These highlights are powered by Markdown content. Override this slot from MDC to customize the intro.
@@ -49,7 +49,7 @@ const hasFeaturedCards = computed(() => featuredCards.value.length > 0)
                         </NuxtLink>
                     </div>
                 </template>
-            </ExamplePostCards>
+            </PostsCard>
         </div>
     </div>
 </template>

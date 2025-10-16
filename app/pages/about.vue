@@ -101,7 +101,7 @@
                 <h2 class="text-3xl font-semibold text-emeraldDeep">Let’s build something people love</h2>
                 <p class="mt-4 text-lg text-emeraldSpruce/80">
                     Have an idea we should cover or a project worth spotlighting? Say hello at
-                    <a href="mailto:hello@example.com" class="font-semibold text-torchOrange underline-offset-4 hover:text-torchGold hover:underline">hello@example.com</a>.
+                    <a href="mailto:hello@myblog.dev" class="font-semibold text-torchOrange underline-offset-4 hover:text-torchGold hover:underline">hello@myblog.dev</a>.
                     We love meeting collaborators, beta testers, and curious readers alike.
                 </p>
                 <NuxtLink
