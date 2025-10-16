@@ -20,7 +20,7 @@ const hasFeaturedCards = computed(() => featuredCards.value.length > 0)
 <template>
     <div class="min-h-screen flex flex-col items-center justify-center bg-emeraldDeep px-4">
         <div class="w-full max-w-2xl text-center">
-            <h1 class="mb-4 text-5xl font-extrabold text-mist">Welcome to My Blog</h1>
+            <h1 class="mb-4 text-5xl font-extrabold text-mist">Welcome to Tales by Torchlight</h1>
             <p class="mb-8 text-lg text-haze">Insights, stories, and tutorials on web development, technology, and more. Dive in and explore the latest posts!</p>
             <NuxtLink to="/all-posts" class="inline-block rounded-full bg-torchGold px-6 py-3 text-emeraldDeep shadow transition hover:bg-torchOrange hover:text-mist">All Posts</NuxtLink>
         </div>

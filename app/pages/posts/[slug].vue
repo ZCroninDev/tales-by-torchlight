@@ -23,7 +23,7 @@ if (!post.value) {
 const renderedBody = computed(() => markdownToHtml(post.value?.body ?? ""))
 
 useSeoMeta({
-    title: () => (post.value ? `${post.value.title} - My Blog` : "Post"),
+    title: () => (post.value ? `${post.value.title} - Tales by Torchlight` : "Post"),
     description: () => post.value?.excerpt ?? undefined
 })
 
