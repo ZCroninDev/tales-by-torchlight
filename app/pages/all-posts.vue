@@ -6,7 +6,7 @@ const { posts } = usePosts()
 </script>
 
 <template>
-    <section class="mx-auto flex w-full max-w-4xl flex-col gap-8 rounded-3xl border border-emeraldJade/30 bg-emeraldSpruce/80 px-6 py-12 shadow-lg shadow-emeraldJade/25">
+    <section class="mx-auto flex w-full max-w-4xl flex-col gap-8 rounded-3xl border border-emeraldJade/30 bg-emeraldSpruce/80 px-6 py-12 my-12 shadow-lg shadow-emeraldJade/25">
         <header class="text-center space-y-2">
             <slot name="heading" mdc-unwrap="p">
                 <h1 class="text-4xl font-extrabold text-mist">Latest Posts</h1>
