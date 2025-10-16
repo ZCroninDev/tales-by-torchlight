@@ -6,6 +6,7 @@
                 <nav class="flex items-center gap-4 text-sm font-medium">
                     <NuxtLink to="/" class="transition-colors hover:text-purple-600" exact-active-class="text-purple-600">Home</NuxtLink>
                     <NuxtLink to="/all-posts" class="transition-colors hover:text-purple-600" exact-active-class="text-purple-600">Posts</NuxtLink>
+                    <NuxtLink to="/about" class="transition-colors hover:text-purple-600" exact-active-class="text-purple-600">About</NuxtLink>
                 </nav>
             </div>
         </header>
