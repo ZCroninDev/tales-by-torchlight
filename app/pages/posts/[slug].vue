@@ -28,6 +28,15 @@ useSeoMeta({
 })
 
 function markdownToHtml(markdown: string): string {
+    const headingClassMap: Record<number, string> = {
+        1: "post-heading mb-10 text-4xl font-semibold tracking-tight text-mist sm:text-5xl",
+        2: "post-heading mb-8 text-3xl font-semibold tracking-tight text-mist",
+        3: "post-heading mb-6 text-2xl font-semibold text-mist",
+        4: "post-heading mb-5 text-xl font-semibold text-haze",
+        5: "post-heading mb-4 text-lg font-semibold text-haze/90",
+        6: "post-heading mb-3 text-sm font-semibold uppercase tracking-[0.35em] text-haze/70"
+    }
+
     const normalized = markdown.replace(/\r\n/g, "\n")
     const lines = normalized.split("\n")
 
@@ -41,7 +50,7 @@ function markdownToHtml(markdown: string): string {
 
     const flushParagraph = () => {
         if (!inParagraph) return
-        html += `<p>${paragraphBuffer.join(" ")}</p>`
+        html += `<p class="post-paragraph mb-6 text-base leading-relaxed text-haze/90 sm:text-lg">${paragraphBuffer.join(" ")}</p>`
         inParagraph = false
         paragraphBuffer = []
     }
@@ -56,7 +65,7 @@ function markdownToHtml(markdown: string): string {
         if (!inCodeBlock) return
         const langClass = codeLang ? ` class="language-${escapeHtml(codeLang)}"` : ""
         const codeContent = escapeHtml(codeBuffer.join("\n"))
-        html += `<pre><code${langClass}>${codeContent}</code></pre>`
+        html += `<pre class="post-pre mb-6 overflow-x-auto rounded-2xl bg-emeraldDeep/70 p-5 text-sm text-mist"><code${langClass} class="post-code">${codeContent}</code></pre>`
         inCodeBlock = false
         codeLang = ""
         codeBuffer = []
@@ -65,15 +74,15 @@ function markdownToHtml(markdown: string): string {
     const formatInline = (input: string) => {
         const escaped = escapeHtml(input)
         const withLinks = escaped.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label: string, url: string) => {
-            return `<a href="${escapeHtml(url)}" target="_blank" rel="noopener">${label}</a>`
+            return `<a href="${escapeHtml(url)}" target="_blank" rel="noopener" class="post-link underline decoration-torchGold/60 underline-offset-4 transition hover:decoration-mist">${label}</a>`
         })
 
         return withLinks
-            .replace(/`([^`]+)`/g, "<code>$1</code>")
-            .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
-            .replace(/__([^_]+)__/g, "<strong>$1</strong>")
-            .replace(/\*([^*]+)\*/g, "<em>$1</em>")
-            .replace(/_([^_]+)_/g, "<em>$1</em>")
+            .replace(/`([^`]+)`/g, '<code class="post-inline-code rounded bg-emeraldDeep/60 px-2 py-1 text-sm text-mist">$1</code>')
+            .replace(/\*\*([^*]+)\*\*/g, '<strong class="post-strong text-mist">$1</strong>')
+            .replace(/__([^_]+)__/g, '<strong class="post-strong text-mist">$1</strong>')
+            .replace(/\*([^*]+)\*/g, '<em class="post-em text-haze">$1</em>')
+            .replace(/_([^_]+)_/g, '<em class="post-em text-haze">$1</em>')
     }
 
     for (const line of lines) {
@@ -109,7 +118,8 @@ function markdownToHtml(markdown: string): string {
             flushList()
             const level = headingMatch[1].length
             const text = formatInline(headingMatch[2])
-            html += `<h${level}>${text}</h${level}>`
+            const headingClass = headingClassMap[level as keyof typeof headingClassMap] || headingClassMap[6]
+            html += `<h${level} class="${headingClass}">${text}</h${level}>`
             continue
         }
 
@@ -117,7 +127,7 @@ function markdownToHtml(markdown: string): string {
             flushParagraph()
             flushList()
             const text = formatInline(bare.replace(/^>\s?/, ""))
-            html += `<blockquote>${text}</blockquote>`
+            html += `<blockquote class="post-quote mb-6 border-l-4 border-emeraldJade/40 pl-4 italic text-haze/80">${text}</blockquote>`
             continue
         }
 
@@ -126,10 +136,10 @@ function markdownToHtml(markdown: string): string {
             if (listType !== "ul") {
                 flushParagraph()
                 flushList()
-                html += "<ul>"
+                html += `<ul class="post-list mb-6 list-disc space-y-2 pl-6 text-haze/90">`
                 listType = "ul"
             }
-            html += `<li>${text}</li>`
+            html += `<li class="post-list-item leading-relaxed">${text}</li>`
             continue
         }
 
@@ -138,10 +148,10 @@ function markdownToHtml(markdown: string): string {
             if (listType !== "ol") {
                 flushParagraph()
                 flushList()
-                html += "<ol>"
+                html += `<ol class="post-list mb-6 list-decimal space-y-2 pl-6 text-haze/90">`
                 listType = "ol"
             }
-            html += `<li>${text}</li>`
+            html += `<li class="post-list-item leading-relaxed">${text}</li>`
             continue
         }
 
@@ -171,23 +181,23 @@ function escapeHtml(value: string): string {
 </script>
 
 <template>
-    <article class="mx-auto flex w-full max-w-3xl flex-col gap-10 rounded-3xl border border-emeraldJade/30 bg-emeraldSpruce/85 px-6 py-16 my-12 shadow-lg shadow-emeraldJade/25">
+    <article class="mx-auto my-12 flex w-full max-w-4xl flex-col gap-12 rounded-3xl border border-emeraldJade/30 bg-emeraldSpruce/90 px-8 py-16 shadow-xl shadow-emeraldJade/25 sm:px-12">
         <NuxtLink to="/all-posts" class="text-sm font-semibold text-torchGold hover:text-mist hover:underline">
             <- Back to all posts
         </NuxtLink>
 
         <header class="space-y-4">
-            <h1 class="text-4xl font-bold text-mist">{{ post?.title }}</h1>
-            <p v-if="post?.date || post?.author" class="text-sm uppercase tracking-wide text-haze/80">
+            <h1 class="text-4xl font-bold leading-tight text-mist sm:text-5xl">{{ post?.title }}</h1>
+            <p v-if="post?.date || post?.author" class="text-sm uppercase tracking-[0.35em] text-haze/80">
                 <span v-if="post?.date">{{ post?.date }}</span>
                 <span v-if="post?.date && post?.author" class="mx-2">&bull;</span>
                 <span v-if="post?.author">{{ post?.author }}</span>
             </p>
-            <p v-if="post?.excerpt" class="text-lg text-haze">
+            <p v-if="post?.excerpt" class="text-lg text-haze/90 sm:text-xl">
                 {{ post?.excerpt }}
             </p>
         </header>
 
-        <div class="prose max-w-none text-haze prose-headings:text-mist prose-a:text-torchGold hover:prose-a:text-mist prose-code:text-mist prose-strong:text-mist" v-html="renderedBody" />
+        <div class="post-content space-y-6 text-haze" v-html="renderedBody" />
     </article>
 </template>
