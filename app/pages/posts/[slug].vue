@@ -6,6 +6,18 @@ import { usePosts } from "~/composables/usePosts"
 const route = useRoute()
 const { posts } = usePosts()
 
+const assetManifestSource = import.meta.glob("~/assets/images/**/*", { eager: true, import: "default" }) as Record<string, string>
+const assetManifest = Object.entries(assetManifestSource).reduce<Record<string, string>>((acc, [key, value]) => {
+    const normalized = normalizeAssetKey(key)
+    acc[normalized] = value
+    acc[key] = value
+    const withLeadingSlash = normalized.replace(/^~\/assets\//, "/assets/")
+    acc[withLeadingSlash] = value
+    const bare = normalized.replace(/^~\/assets\/images\//, "")
+    acc[bare] = value
+    return acc
+}, {})
+
 const slug = computed(() => {
     const value = route.params.slug
     return Array.isArray(value) ? value[0] : value
@@ -73,7 +85,13 @@ function markdownToHtml(markdown: string): string {
 
     const formatInline = (input: string) => {
         const escaped = escapeHtml(input)
-        const withLinks = escaped.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label: string, url: string) => {
+        const withImages = escaped.replace(/!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]+)")?\)/g, (_, alt: string, src: string) => {
+            const resolved = escapeHtml(resolveAssetPath(src))
+            const altText = escapeHtml(alt)
+            return `<img src="${resolved}" alt="${altText}" class="post-inline-image inline-block max-h-64 rounded-xl shadow-sm align-middle" />`
+        })
+
+        const withLinks = withImages.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label: string, url: string) => {
             return `<a href="${escapeHtml(url)}" target="_blank" rel="noopener" class="post-link underline decoration-torchGold/60 underline-offset-4 transition hover:decoration-mist">${label}</a>`
         })
 
@@ -109,6 +127,21 @@ function markdownToHtml(markdown: string): string {
         if (!bare) {
             flushParagraph()
             flushList()
+            continue
+        }
+
+        const imageMatch = bare.match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]+)")?\)$/)
+        if (imageMatch) {
+            flushParagraph()
+            flushList()
+            const alt = escapeHtml(imageMatch[1])
+            const src = escapeHtml(resolveAssetPath(imageMatch[2]))
+            const caption = imageMatch[3] ? formatInline(imageMatch[3]) : ""
+            html += `<figure class="post-figure my-8 flex flex-col items-center gap-4"><img src="${src}" alt="${alt}" class="post-image w-full rounded-2xl shadow-lg" />`
+            if (caption) {
+                html += `<figcaption class="text-sm text-haze/80">${caption}</figcaption>`
+            }
+            html += `</figure>`
             continue
         }
 
@@ -168,6 +201,37 @@ function markdownToHtml(markdown: string): string {
     flushCode()
 
     return html
+}
+
+function normalizeAssetKey(input: string): string {
+    const [pathWithoutQuery] = input.split("?")
+    const normalized = pathWithoutQuery.replace(/\\/g, "/")
+    const index = normalized.lastIndexOf("/assets/")
+    if (index !== -1) {
+        return `~/assets/${normalized.slice(index + "/assets/".length)}`
+    }
+    if (normalized.startsWith("~/assets/")) {
+        return normalized
+    }
+    if (normalized.startsWith("/assets/")) {
+        return `~${normalized}`
+    }
+    return `~/assets/${normalized.replace(/^~/, "").replace(/^assets\//, "")}`
+}
+
+function resolveAssetPath(value: string): string {
+    const cleaned = value.trim().replace(/^['"]|['"]$/g, "")
+    if (assetManifest[cleaned]) {
+        return assetManifest[cleaned]
+    }
+
+    const normalized = cleaned
+        .replace(/^@\/?/, "~/")
+        .replace(/^~\//, "~/")
+        .replace(/^\/assets\//, "~/assets/")
+        .replace(/^assets\//, "~/assets/")
+
+    return assetManifest[normalized] ?? assetManifest[normalized.replace(/^~\/assets\//, "")] ?? cleaned
 }
 
 function escapeHtml(value: string): string {
