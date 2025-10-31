@@ -50,6 +50,14 @@ const hasFeaturedCards = computed(() => featuredCards.value.length > 0)
                     </div>
                 </template>
             </PostsCard>
+            <div class="mt-10 text-center">
+                <NuxtLink
+                    to="/freebies"
+                    class="inline-flex items-center justify-center rounded-full bg-torchGold px-6 py-3 text-sm font-semibold text-emeraldDeep shadow transition hover:bg-torchOrange hover:text-mist"
+                >
+                    Explore Free D&D Resources
+                </NuxtLink>
+            </div>
         </div>
     </div>
 </template>
