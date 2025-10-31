@@ -1,5 +1,4 @@
 import { createError, readBody } from "h3"
-import { hubDatabase } from "#imports"
 
 type SignupPayload = {
     name?: string
@@ -19,18 +18,15 @@ export default defineEventHandler(async (event) => {
         })
     }
 
-    const db = (() => {
-        try {
-            return hubDatabase()
-        } catch (error: unknown) {
-            throw createError({
-                statusCode: 500,
-                statusMessage:
-                    (error as { message?: string })?.message ??
-                    "Database connection is unavailable. Ensure NuxtHub local storage is configured."
-            })
-        }
-    })()
+    const hubDatabase = await loadHubDatabase()
+    if (!hubDatabase) {
+        throw createError({
+            statusCode: 503,
+            statusMessage: "Database connection is unavailable. Enable NuxtHub or connect your backend before collecting sign-ups."
+        })
+    }
+
+    const db = hubDatabase()
 
     await db
         .prepare(
@@ -59,3 +55,12 @@ export default defineEventHandler(async (event) => {
         ok: true
     }
 })
+
+async function loadHubDatabase() {
+    try {
+        const mod = await import("#imports")
+        return mod.hubDatabase
+    } catch {
+        return undefined
+    }
+}
