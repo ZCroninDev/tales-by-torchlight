@@ -6,14 +6,14 @@
         <div class="relative mx-auto flex w-full max-w-5xl flex-col gap-16 px-4 py-20 sm:px-6 lg:px-8">
             <header class="space-y-6 text-center sm:space-y-8">
                 <span class="inline-flex items-center gap-2 rounded-full border border-emeraldJade/40 bg-emeraldSpruce/70 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-haze">
-                    About us
+                    Torchlight origins
                 </span>
                 <h1 class="text-4xl font-bold leading-tight text-mist sm:text-5xl">
-                    We craft approachable stories for people building the modern web
+                    Helping dungeon masters craft legendary nights since 2024
                 </h1>
                 <p class="mx-auto max-w-3xl text-lg text-haze sm:text-xl">
-                    From architecture to accessibility, we unpack the tools, ideas, and collaborations that help teams deliver thoughtful digital products.
-                    Every article is written by practitioners who ship to production.
+                    Tales by Torchlight is a warm campfire for storytellers, improvisers, and brand-new DMs.
+                    We publish table-tested advice, safety-forward session zero guides, and printable freebies designed to keep every player engaged.
                 </p>
             </header>
 
@@ -21,11 +21,11 @@
                 <article class="rounded-3xl border border-emeraldJade/40 bg-emeraldSpruce/80 p-10 shadow-xl shadow-emeraldJade/30">
                     <h2 class="text-2xl font-semibold text-mist">Our mission</h2>
                     <p class="mt-4 text-haze">
-                        Make it easier for builders of every background to stay curious, experiment boldly, and share what they learn.
-                        We believe publishing should feel less like a chore and more like a conversation with friends.
+                        Make running tabletop RPGs less intimidating and far more collaborative.
+                        We believe the best sessions start with shared expectations, generous prep, and tools that let everyone bring their weirdest ideas to the table.
                     </p>
                     <p class="mt-4 text-haze">
-                        Expect honest write-ups, pragmatic checklists, and the occasional deep dive into the frameworks that keep us up at night.
+                        That is why you will find actionable walkthroughs, honest retrospectives, and resources you can drop straight into tonight's session without rewriting your whole campaign.
                     </p>
                 </article>
 
@@ -35,15 +35,15 @@
                         <ul class="mt-5 space-y-4 text-haze">
                             <li class="flex gap-3">
                                 <span class="mt-1 inline-flex h-2.5 w-2.5 shrink-0 rounded-full bg-torchOrange" />
-                                Practical, copy-paste snippets and diagrams that make complex topics digestible.
+                                Session zero templates and safety tools that make expectation-setting feel natural.
                             </li>
                             <li class="flex gap-3">
                                 <span class="mt-1 inline-flex h-2.5 w-2.5 shrink-0 rounded-full bg-torchOrange" />
-                                Product-inspired retrospectives — we share the messy middle, not just polished launches.
+                                Adventure hooks, encounter prompts, and trackers that shave hours off prep without losing flavor.
                             </li>
                             <li class="flex gap-3">
                                 <span class="mt-1 inline-flex h-2.5 w-2.5 shrink-0 rounded-full bg-torchOrange" />
-                                Friendly conversations with teams shaping the future of web tooling and design systems.
+                                Debriefs from real tables—what delighted players, what flopped, and how we course-corrected.
                             </li>
                         </ul>
                     </article>
@@ -52,16 +52,16 @@
                         <p class="text-sm font-semibold uppercase tracking-wide text-haze/80">In numbers</p>
                         <dl class="grid gap-6 sm:grid-cols-3">
                             <div>
-                                <dt class="text-xs uppercase tracking-wide text-haze/70">Contributors</dt>
-                                <dd class="mt-1 text-3xl font-bold text-mist">12+</dd>
+                                <dt class="text-xs uppercase tracking-wide text-haze/70">Campaign primers</dt>
+                                <dd class="mt-1 text-3xl font-bold text-mist">18</dd>
                             </div>
                             <div>
-                                <dt class="text-xs uppercase tracking-wide text-haze/70">Articles published</dt>
-                                <dd class="mt-1 text-3xl font-bold text-mist">120</dd>
+                                <dt class="text-xs uppercase tracking-wide text-haze/70">Freebie downloads</dt>
+                                <dd class="mt-1 text-3xl font-bold text-mist">26</dd>
                             </div>
                             <div>
-                                <dt class="text-xs uppercase tracking-wide text-haze/70">Coffee brewed</dt>
-                                <dd class="mt-1 text-3xl font-bold text-mist">infinite</dd>
+                                <dt class="text-xs uppercase tracking-wide text-haze/70">Tables inspired</dt>
+                                <dd class="mt-1 text-3xl font-bold text-mist">3k+</dd>
                             </div>
                         </dl>
                     </div>
@@ -72,43 +72,43 @@
                 <div class="lg:col-span-1">
                     <h2 class="text-2xl font-semibold text-mist">Values that guide us</h2>
                     <p class="mt-4 text-haze">
-                        These are the lenses we use when deciding what to publish and how to invest our time.
+                        Every article and download is filtered through these principles so your table stays energized and safe.
                     </p>
                 </div>
                 <div class="grid gap-6 lg:col-span-2 sm:grid-cols-2">
                     <article class="rounded-2xl border border-emeraldJade/30 bg-emeraldDeep/60 p-6">
                         <h3 class="text-lg font-semibold text-mist">Clarity first</h3>
                         <p class="mt-2 text-sm text-haze">
-                            We break down ideas with just enough detail to get you shipping without the detours.
+                            We translate crunchy mechanics and sprawling lore into approachable steps you can teach in minutes.
                         </p>
                     </article>
                     <article class="rounded-2xl border border-emeraldJade/30 bg-emeraldDeep/60 p-6">
-                        <h3 class="text-lg font-semibold text-mist">Community driven</h3>
+                        <h3 class="text-lg font-semibold text-mist">Consent and safety</h3>
                         <p class="mt-2 text-sm text-haze">
-                            We listen to readers, surface new voices, and celebrate collective wins.
+                            Emotional safety tools are non-negotiable. We weave them into every guide so your group can explore bravely.
                         </p>
                     </article>
                     <article class="rounded-2xl border border-emeraldJade/30 bg-emeraldDeep/60 p-6 sm:col-span-2">
-                        <h3 class="text-lg font-semibold text-mist">Better together</h3>
+                        <h3 class="text-lg font-semibold text-mist">Shared storytelling</h3>
                         <p class="mt-2 text-sm text-haze">
-                            Our best work happens when designers, engineers, and storytellers create side by side.
+                            The table is at its best when everyone co-creates. We champion prompts and structures that invite every voice in.
                         </p>
                     </article>
                 </div>
             </section>
 
             <footer class="rounded-3xl border border-emeraldJade/30 bg-emeraldSpruce/80 p-10 text-center shadow-lg shadow-emeraldJade/25">
-                <h2 class="text-3xl font-semibold text-mist">Let’s build something people love</h2>
+                <h2 class="text-3xl font-semibold text-mist">Pull up a chair at the fire</h2>
                 <p class="mt-4 text-lg text-haze">
-                    Have an idea we should cover or a project worth spotlighting? Say hello at
-                    <a href="mailto:hello@myblog.dev" class="font-semibold text-torchGold underline-offset-4 hover:text-mist hover:underline">hello@myblog.dev</a>.
-                    We love meeting collaborators, beta testers, and curious readers alike.
+                    Have a table victory to celebrate or a thorny scenario you want advice on? Reach us at
+                    <a href="mailto:hello@talesbytorchlight.com" class="font-semibold text-torchGold underline-offset-4 hover:text-mist hover:underline">hello@talesbytorchlight.com</a>.
+                    We love meeting fellow GMs, storytellers, and players chasing collaborative joy.
                 </p>
                 <NuxtLink
                     to="/all-posts"
                     class="mt-6 inline-flex items-center gap-2 rounded-full bg-torchGold px-6 py-3 text-sm font-semibold text-emeraldDeep transition hover:bg-torchOrange hover:text-mist"
                 >
-                    Explore our latest articles
+                    Explore our latest posts
                     <span aria-hidden="true">-></span>
                 </NuxtLink>
             </footer>
