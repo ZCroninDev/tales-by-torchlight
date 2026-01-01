@@ -98,13 +98,9 @@ const handleSubmit = async () => {
                     Build richer campaigns without reinventing the wheel. Download curated tools, checklists, and templates to
                     thrill your table.
                 </p>
-                <button
-                    type="button"
-                    class="mt-6 inline-flex items-center justify-center rounded-full bg-torchGold px-6 py-3 text-base font-semibold text-emeraldDeep transition hover:bg-torchOrange hover:text-mist"
-                    @click="openSignup()"
-                >
+                <h2 class="mt-6 text-2xl font-semibold text-torchGold">
                     Claim the freebies
-                </button>
+                </h2>
             </header>
 
             <section class="grid gap-6 md:grid-cols-2">
