@@ -1,4 +1,4 @@
----
+﻿---
 title: "Beyond Character Sheets: 10 Easy Habits to Make Your D&D Nights Way More Fun"
 date: "2025-09-29"
 author: "Jane Doe"
@@ -7,7 +7,7 @@ excerpt: "Ten low-effort table habits that keep every player engaged and turn yo
 
 # Beyond Character Sheets: 10 Easy Habits to Make Your D&D Nights Way More Fun
 
-![Adventurers gathered around a glowing map, laughing together at the table](~/assets/images/beyond-character-sheets-1.jpg)
+![Adventurers gathered around a glowing map, laughing together at the table](/images/posts/beyond-character-sheets-1.jpg)
 
 When we sit down to play D&D, we usually have the basics ready: dice, character sheets, and of course, snacks. My husband and I always make sure drinks and food are within reach so the game can keep moving without interruptions. But the best sessions aren't great just because the DM built a badass dungeon -- though that's definitely a big part of it. What really makes a session shine is when everyone at the table finds ways to connect, share some laughs, and build the story together.
 
@@ -35,7 +35,7 @@ It also creates hooks for roleplay; the barbarian's fear of water might suddenly
 
 3. Table Signals
 
-![Players signaling to each other with playful gestures during a tabletop scene](~/assets/images/beyond-character-sheets-2.jpg)
+![Players signaling to each other with playful gestures during a tabletop scene](/images/posts/beyond-character-sheets-2.jpg)
 
 If your players are anything like mine, they love to talk. Multiply that by the number of people at the table who have ADHD, and your carefully planned story can get sidetracked before you've even finished describing the damn tavern. A little table chatter is great;  it builds camaraderie and keeps the mood light, but if it starts pulling focus from the game, having a few agreed-upon signals can save the session. These quick gestures or phrases let players communicate without breaking immersion or derailing the narrative.
 
@@ -87,7 +87,7 @@ By keeping these tools visible and reminding the table about them, you normalize
 
 5. Mood Board or Vibe
 
-![Dungeon master adjusting ambient lighting and music playlist](~/assets/images/beyond-character-sheets-3.jpg)
+![Dungeon master adjusting ambient lighting and music playlist](/images/posts/beyond-character-sheets-3.jpg)
 
 Bring something that shows your character's vibe today: a song, a meme, a quote, or even just a picture you found scrolling. It might sound goofy, but it works like magic for slipping into character. Instead of spending the first half-hour warming up, you've got a shortcut straight into your PC's headspace.
 
@@ -131,7 +131,7 @@ The point isn't to load the game down with a hundred extra mechanics. It's to se
 
 9. Downtime Declarations
 
-![Player journaling their character's downtime plans between sessions](~/assets/images/beyond-character-sheets-4.jpg)
+![Player journaling their character's downtime plans between sessions](/images/posts/beyond-character-sheets-4.jpg)
 
 Before diving headfirst into the next adventure, take a minute to ask what your characters were up to between sessions. Did they train their asses off in the yard? Did they gamble away half their gold on the slime races? Did they write sappy letters to some NPC crush?
 
@@ -166,4 +166,5 @@ Also, housekeeping saves lives. Not actual real-world lives, but definitely the 
 And if you are worried the table talk will feel dorky, lean in. The whole hobby is collaborative make-believe with funny hats. A quick highlight reel, a vibe check song, a couple of hand signals, and suddenly your game runs smoother than a rogue on ball bearings. Players feel seen, the DM gets free plot hooks, and everyone leaves with quotes to roast each other with in the group chat.
 
 Because D&D isn't just about rolling dice or tracking hit points. It is about the moments that make you laugh so hard you drop your mini, the choices that make you cringe in exactly the right way, and the cheer when the nat 20 lands on the table and someone yells, "Write that down." Add a few of these habits, and your sessions will go from "that was fun" to "legendary tale we will bring up at every barbecue until the end of time."
+
 

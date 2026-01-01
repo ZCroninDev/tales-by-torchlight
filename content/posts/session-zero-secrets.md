@@ -1,4 +1,4 @@
----
+﻿---
 title: "Session Zero Secrets: Things Most Groups Forget to Cover"
 date: "2025-09-29"
 author: "Jane Doe"
@@ -7,9 +7,9 @@ excerpt: "Seven overlooked session-zero conversations that set boundaries, manag
 
 # Session Zero Secrets: Things Most Groups Forget to Cover
 
-![A dungeon master leading a collaborative planning session before a campaign begins](~/assets/images/session-zero-secrets-1.jpg)
+![A dungeon master leading a collaborative planning session before a campaign begins](/images/posts/session-zero-secrets-1.jpg)
 
-Session zero is your campaign's safety net. It is where you align expectations, surface deal-breakers, and decide how the story should feel before dice ever hit the table. Most groups cover the basics—tone, schedule, maybe a quick rules refresher—but plenty of critical questions get skipped because they feel awkward or "obvious." Here are seven topics I always revisit to make sure the campaign starts with buy-in from everyone at the table.
+Session zero is your campaign's safety net. It is where you align expectations, surface deal-breakers, and decide how the story should feel before dice ever hit the table. Most groups cover the basicsâ€”tone, schedule, maybe a quick rules refresherâ€”but plenty of critical questions get skipped because they feel awkward or "obvious." Here are seven topics I always revisit to make sure the campaign starts with buy-in from everyone at the table.
 
 ## 1. Spotlight Balance and Story Cadence
 
@@ -21,7 +21,7 @@ Instead of a quick nod to safety tools, define concrete examples of lines (hard 
 
 ## 3. Table Tech and Distractions
 
-Phones, tablets, and laptops can be helpful references—or bottomless attention drains. Decide how devices should be used during play, when it is okay to look up rules, and how you will share digital character sheets or battle maps. If someone needs a device for accessibility, make that clear so nobody misreads it as disengagement.
+Phones, tablets, and laptops can be helpful referencesâ€”or bottomless attention drains. Decide how devices should be used during play, when it is okay to look up rules, and how you will share digital character sheets or battle maps. If someone needs a device for accessibility, make that clear so nobody misreads it as disengagement.
 
 ## 4. Downtime and Between-Session Logistics
 
@@ -37,7 +37,7 @@ Character conflict can be juicy drama, but only if everyone can separate fiction
 
 ## 7. Exit Strategy and Campaign Wrap
 
-Life happens—jobs change, schedules break, or interest fades. Build an exit plan that honors everyone's time. Decide how much notice you want if someone needs to leave, how their character will exit, and whether the remaining group wants to fold in new players. Planning for the end at the beginning keeps the story from collapsing when real life intrudes.
+Life happensâ€”jobs change, schedules break, or interest fades. Build an exit plan that honors everyone's time. Decide how much notice you want if someone needs to leave, how their character will exit, and whether the remaining group wants to fold in new players. Planning for the end at the beginning keeps the story from collapsing when real life intrudes.
 
 ### Quick Checklist to Capture Decisions
 
@@ -50,3 +50,4 @@ Life happens—jobs change, schedules break, or interest fades. Build an exit pl
 - The signal anyone can use to pause, breathe, and reset
 
 Treat session zero like worldbuilding. The clearer you are now, the easier it becomes to improvise later without stepping on anyone's fun. Make these conversations part of your campaign ritual and you'll head into session one with a party that trusts each other and a DM who knows exactly how to guide the adventure.
+
