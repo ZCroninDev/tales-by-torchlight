@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue"
-import { $fetch } from "ofetch"
+import { onMounted, ref } from "vue"
 
 const resources = [
     {
@@ -17,25 +16,11 @@ const resources = [
     }
 ]
 
-const name = ref("")
-const email = ref("")
-const statusMessage = ref("")
-const statusState = ref<"idle" | "success" | "error">("idle")
-const isSubmitting = ref(false)
 const isModalOpen = ref(false)
 const selectedResourceTitle = ref<string | null>(null)
 
-const resetFormState = () => {
-    name.value = ""
-    email.value = ""
-    statusMessage.value = ""
-    statusState.value = "idle"
-    isSubmitting.value = false
-}
-
 const openSignup = (resourceTitle?: string) => {
     selectedResourceTitle.value = resourceTitle ?? null
-    resetFormState()
     isModalOpen.value = true
 }
 
@@ -43,50 +28,27 @@ const closeSignup = () => {
     isModalOpen.value = false
 }
 
-const handleSubmit = async () => {
-    const trimmedName = name.value.trim()
-    const trimmedEmail = email.value.trim()
+onMounted(() => {
+    const win = window as Window & { ml?: (...args: unknown[]) => void }
+    const ml =
+        win.ml ||
+        function (...args: unknown[]) {
+            const queued = (ml as { q?: unknown[][] }).q || []
+            queued.push(args)
+            ;(ml as { q?: unknown[][] }).q = queued
+        }
+    win.ml = ml
 
-    statusMessage.value = ""
-    statusState.value = "idle"
-
-    if (!trimmedName || !trimmedEmail) {
-        statusMessage.value = "Please share both your name and email so we know where to deliver your loot."
-        statusState.value = "error"
-        return
+    if (!document.querySelector('script[data-ml-universal="true"]')) {
+        const script = document.createElement("script")
+        script.async = true
+        script.src = "https://assets.mailerlite.com/js/universal.js"
+        script.dataset.mlUniversal = "true"
+        document.head.appendChild(script)
     }
 
-    try {
-        isSubmitting.value = true
-        await $fetch("/api/freebies/signups", {
-            method: "POST",
-            body: {
-                name: trimmedName,
-                email: trimmedEmail
-            }
-        })
-
-        statusState.value = "success"
-        statusMessage.value = `Thanks, ${trimmedName}! We'll send the freebies to ${trimmedEmail} shortly.`
-        name.value = ""
-        email.value = ""
-    } catch (error: unknown) {
-        // Nuxt's $fetch exposes error data under the "data" key when available.
-        const message =
-            (error as { data?: { statusMessage?: string; message?: string }; message?: string })?.data?.statusMessage ??
-            (error as { data?: { statusMessage?: string; message?: string }; message?: string })?.data?.message ??
-            (error as { message?: string })?.message ??
-            "We couldn't save your sign-up. Please try again."
-
-        statusState.value = "error"
-        statusMessage.value =
-            message?.includes("Missing Cloudflare DB binding")
-                ? "The database connection is offline. Run `nuxthub dev` (or start Wrangler) before submitting the form."
-                : message
-    } finally {
-        isSubmitting.value = false
-    }
-}
+    ml("account", "2011815")
+})
 </script>
 
 <template>
@@ -126,7 +88,7 @@ const handleSubmit = async () => {
 
         <transition name="freebie-modal">
             <div
-                v-if="isModalOpen"
+                v-show="isModalOpen"
                 class="fixed inset-0 z-50 flex items-center justify-center bg-emeraldDeep/90 px-4 py-10"
                 role="dialog"
                 aria-modal="true"
@@ -157,51 +119,8 @@ const handleSubmit = async () => {
                                 No spam, just adventure-ready tools to keep your table inspired.
                             </p>
                         </div>
-                        <form class="grid gap-6" @submit.prevent="handleSubmit" novalidate>
-                            <label class="flex flex-col gap-2 text-base text-mist">
-                                <span>Name</span>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    required
-                                    v-model="name"
-                                    class="rounded-xl border border-emeraldJade/40 bg-emeraldDeep/80 px-4 py-3 text-base text-mist focus:border-torchGold focus:outline-none focus:ring-2 focus:ring-torchGold/60"
-                                    placeholder="A daring adventurer"
-                                    :disabled="isSubmitting"
-                                />
-                            </label>
-                            <label class="flex flex-col gap-2 text-base text-mist">
-                                <span>Email</span>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    required
-                                    v-model="email"
-                                    class="rounded-xl border border-emeraldJade/40 bg-emeraldDeep/80 px-4 py-3 text-base text-mist focus:border-torchGold focus:outline-none focus:ring-2 focus:ring-torchGold/60"
-                                    placeholder="you@example.com"
-                                    :disabled="isSubmitting"
-                                />
-                            </label>
-                            <button
-                                type="submit"
-                                class="w-full rounded-full bg-torchGold px-8 py-4 text-lg font-semibold text-emeraldDeep transition hover:bg-torchOrange hover:text-mist disabled:cursor-not-allowed disabled:opacity-70"
-                                :disabled="isSubmitting"
-                            >
-                                <span v-if="isSubmitting">Saving your stash...</span>
-                                <span v-else>Send me the freebies</span>
-                            </button>
-                        </form>
+                        <div class="ml-embedded" data-form="Xj0WLO"></div>
                     </div>
-                    <p
-                        v-if="statusMessage"
-                        class="mt-8 text-base font-medium"
-                        :class="{
-                            'text-torchGold/90': statusState === 'success' || statusState === 'idle',
-                            'text-red-300': statusState === 'error'
-                        }"
-                    >
-                        {{ statusMessage }}
-                    </p>
                 </div>
             </div>
         </transition>
